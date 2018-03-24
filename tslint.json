@@ -1,0 +1,32 @@
+{
+  "defaultSeverity": "error",
+  "extends": [
+    "tslint:recommended",
+    "tslint-eslint-rules",
+    "tslint-config-prettier",
+    "tslint-plugin-prettier"
+  ],
+  "jsRules": {},
+  "rules": {
+      "interface-over-type-literal": false,
+      "prettier": [true,
+        {
+        "trailingComma": "all"
+        }
+      ],
+      "member-ordering": [
+        true, {
+          "alphabetize": true,
+          "order": "fields-first"
+        }
+      ],
+      "valid-jsdoc": [true, {
+        "prefer": {"arg": "param", "argument": "param","return": "returns"},
+        "requireReturn": false,
+        "requireParamType": false,
+        "requireReturnType": false,
+        "requireReturnDescription": true
+      }]
+    },
+  "rulesDirectory": []
+}

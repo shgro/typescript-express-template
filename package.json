@@ -1,0 +1,98 @@
+{
+  "name": "typescript-template",
+  "version": "1.0.0",
+  "description": "",
+  "homepage": "https://github.com/shgro/typescript-template#readme",
+  "bugs": {
+    "url": "https://github.com/shgro/typescript-template/issues"
+  },
+  "license": "ISC",
+  "author": "shgro",
+  "main": "./build/index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/shgro/typescript-template.git"
+  },
+  "scripts": {
+    "build": "tsc -p tsconfig.json",
+    "precommit": "lint-staged",
+    "lint": "tslint --project ./tsconfig.lint.json --fix",
+    "prepush": "npm run test",
+    "test": "jest --forceExit"
+  },
+  "prettier": {
+    "overrides": [
+      {
+        "files": "*.json",
+        "options": {
+          "parser": "json"
+        }
+      },
+      {
+        "files": "*.md",
+        "options": {
+          "parser": "markdown"
+        }
+      }
+    ]
+  },
+  "jest": {
+    "collectCoverage": true,
+    "collectCoverageFrom": [
+      "src/**/*.{ts,tsx,jsx}",
+      "!src/**/*.d.ts"
+    ],
+    "moduleFileExtensions": [
+      "ts",
+      "tsx",
+      "js",
+      "jsx"
+    ],
+    "testEnvironment": "node",
+    "testRegex": "(/test/.*|(\\.|/)(test|spec))\\.(jsx?|tsx?)$",
+    "transform": {
+      "^.+\\.ts?$": "ts-jest"
+    }
+  },
+  "dependencies": {
+    "express": "^4.16.3",
+    "node-sass-middleware": "^0.11.0",
+    "pug": "^2.0.3"
+  },
+  "devDependencies": {
+    "@types/express": "^4.11.1",
+    "@types/jest": "^22.2.2",
+    "@types/node": "^9.6.0",
+    "@types/node-sass-middleware": "^0.0.30",
+    "@types/power-assert": "^1.4.29",
+    "@types/supertest": "^2.0.4",
+    "husky": "^0.14.3",
+    "jest": "^22.4.3",
+    "lint-staged": "^7.0.0",
+    "power-assert": "^1.4.4",
+    "prettier": "^1.11.1",
+    "sort-package-json": "^1.11.0",
+    "supertest": "^3.0.0",
+    "ts-jest": "^22.4.2",
+    "tslint": "^5.9.1",
+    "tslint-config-prettier": "^1.10.0",
+    "tslint-eslint-rules": "^5.1.0",
+    "tslint-plugin-prettier": "^1.3.0",
+    "typescript": "^2.7.2"
+  },
+  "lint-staged": {
+    "*.ts": [
+      "jest --bail --findRelatedTests --forceExit",
+      "npm run lint",
+      "git add"
+    ],
+    "*.{json, md}": [
+      "prettier",
+      "git add"
+    ],
+    "package.json": [
+      "sort-package-json",
+      "git add"
+    ]
+  }
+}
