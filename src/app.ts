@@ -1,16 +1,18 @@
 import express from "express";
 import sassMw from "node-sass-middleware";
 import path from "path";
-import { HelloWorld } from "./helloWorld";
 
 export const app: express.Application = express();
 
-app.set("views", path.join(__dirname, "..", "views", "pug"));
+app.set("views", path.join(__dirname, "..", "views", "pug", "content"));
 app.set("view engine", "pug");
 
 const sassPath = path.join(__dirname, "..", "views", "sass");
 const cssPath = path.join(__dirname, "..", "public", "css");
+const imgPath = path.join(__dirname, "..", "public", "img");
+
 const cssPrefix = "/css";
+const imgPrefix = "/img";
 
 app.use(
   sassMw({
@@ -23,12 +25,12 @@ app.use(
 );
 
 app.use(cssPrefix, express.static(cssPath));
+app.use(imgPrefix, express.static(imgPath));
 
 app.get("/", (_, res) => {
   res.status(200);
-  res.render("index", {
-    message: HelloWorld.hello(),
-    title: "index",
+  res.render("top", {
+    title: "HOME",
   });
 });
 
