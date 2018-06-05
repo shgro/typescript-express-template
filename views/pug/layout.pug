@@ -1,0 +1,19 @@
+doctype html
+html(lang='ja')
+  head
+    meta(charset='utf-8')
+    link(rel='stylesheet', href='/css/style.css')
+    block title
+  body
+    div.container
+      br
+      include ./common/header
+      hr
+      include ./common/nav
+      hr
+
+      article
+        block content
+
+      hr
+      include ./common/footer
