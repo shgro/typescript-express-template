@@ -14,14 +14,14 @@
     "url": "git+https://github.com/shgro/typescript-template.git"
   },
   "scripts": {
-    "browser": "browser-sync start --proxy 'localhost:8080' --files *",
+    "browser": "npm run start & browser-sync start --proxy 'localhost:8080' --files *",
     "build": "tsc -p tsconfig.json",
     "precommit": "lint-staged",
     "lint": "tslint --project ./tsconfig.lint.json --fix",
     "prepush": "npm run test",
     "start": "node ./build/app.js",
     "test": "jest --forceExit",
-    "watch": "npm run build -- --watch & npm run start & npm run browser"
+    "watch": "npm run build && npm run browser"
   },
   "prettier": {
     "overrides": [
